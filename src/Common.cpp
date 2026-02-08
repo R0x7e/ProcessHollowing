@@ -22,10 +22,6 @@ namespace Hollowing {
         VirtualAllocEx = (pVirtualAllocEx)GetProcAddress(kernel32, "VirtualAllocEx");
         WriteProcessMemory = (pWriteProcessMemory)GetProcAddress(kernel32, "WriteProcessMemory");
         ReadProcessMemory = (pReadProcessMemory)GetProcAddress(kernel32, "ReadProcessMemory");
-        VirtualProtectEx = (pVirtualProtectEx)GetProcAddress(kernel32, "VirtualProtectEx");
-        CreateRemoteThread = (pCreateRemoteThread)GetProcAddress(kernel32, "CreateRemoteThread");
-        WaitForSingleObject = (pWaitForSingleObject)GetProcAddress(kernel32, "WaitForSingleObject");
-        GetExitCodeThread = (pGetExitCodeThread)GetProcAddress(kernel32, "GetExitCodeThread");
         GetThreadContext = (pGetThreadContext)GetProcAddress(kernel32, "GetThreadContext");
         SetThreadContext = (pSetThreadContext)GetProcAddress(kernel32, "SetThreadContext");
         

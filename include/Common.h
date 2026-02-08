@@ -28,15 +28,6 @@ namespace Hollowing {
     };
 
     /**
-     * @brief 简单的 Unicode 字符串结构 (手动定义以匹配内存布局)
-     */
-    struct CUR_UNICODE_STRING {
-        USHORT Length;
-        USHORT MaximumLength;
-        ULONG_PTR Buffer;
-    };
-
-    /**
      * @brief 动态 API 函数原型定义
      * 使用动态调用可以避开静态导入表检查，增强隐蔽性
      */
@@ -49,10 +40,6 @@ namespace Hollowing {
     typedef BOOL(WINAPI* pSetThreadContext)(HANDLE, CONST CONTEXT*);
     typedef BOOL(WINAPI* pWow64GetThreadContext)(HANDLE, PWOW64_CONTEXT);
     typedef BOOL(WINAPI* pWow64SetThreadContext)(HANDLE, PWOW64_CONTEXT);
-    typedef BOOL(WINAPI* pVirtualProtectEx)(HANDLE, LPVOID, SIZE_T, DWORD, PDWORD);
-    typedef HANDLE(WINAPI* pCreateRemoteThread)(HANDLE, LPSECURITY_ATTRIBUTES, SIZE_T, LPTHREAD_START_ROUTINE, LPVOID, DWORD, LPDWORD);
-    typedef DWORD(WINAPI* pWaitForSingleObject)(HANDLE, DWORD);
-    typedef BOOL(WINAPI* pGetExitCodeThread)(HANDLE, LPDWORD);
     typedef DWORD(WINAPI* pResumeThread)(HANDLE);
     typedef BOOL(WINAPI* pTerminateProcess)(HANDLE, UINT);
 
@@ -79,10 +66,6 @@ namespace Hollowing {
         pVirtualAllocEx VirtualAllocEx;
         pWriteProcessMemory WriteProcessMemory;
         pReadProcessMemory ReadProcessMemory;
-        pVirtualProtectEx VirtualProtectEx;
-        pCreateRemoteThread CreateRemoteThread;
-        pWaitForSingleObject WaitForSingleObject;
-        pGetExitCodeThread GetExitCodeThread;
         pGetThreadContext GetThreadContext;
         pSetThreadContext SetThreadContext;
         pWow64GetThreadContext Wow64GetThreadContext;
