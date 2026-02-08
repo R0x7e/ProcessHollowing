@@ -54,7 +54,7 @@ g++ main.cpp src/Common.cpp src/PEParser.cpp src/Network.cpp src/Security.cpp sr
 ```batch
 @echo off
 echo [*] Compiling ProcessHollowing...
-g++ main.cpp src/Common.cpp src/PEParser.cpp src/Network.cpp src/Security.cpp src/HollowingCore.cpp -I. -o ProcessHollowing.exe -lwininet -static
+g++ main.cpp src/Common.cpp src/PEParser.cpp src/Network.cpp src/Security.cpp src/HollowingCore.cpp -I. -o ProcessHollowing.exe -lwininet -static -finput-charset=UTF-8 -fexec-charset=GBK
 if %errorlevel% equ 0 (
     echo [+] Compilation successful: ProcessHollowing.exe
 ) else (
@@ -81,7 +81,7 @@ ProcessHollowing.exe <Payload_URL> [Target_Process_Path]
 当 Payload 无法加载到其 `ImageBase` 指定的地址时，必须进行重定位。我们通过遍历 `IMAGE_DIRECTORY_ENTRY_BASERELOC` 目录，计算 `Delta = 实际分配地址 - 期望地址`，并对所有需要修正的地址进行累加偏移。
 
 ### 线程上下文更新
-- **X64**: 修改 `ctx.Rax` 为入口点，同时更新 `ctx.Rdx + 0x10` (PEB 中的镜像基址)。
+- **X64**: 修改 `ctx.Rcx` 为入口点，同时更新 `ctx.Rdx + 0x10` (PEB 中的镜像基址)。
 - **X86**: 修改 `ctx.Eax` 为入口点，同时更新 `ctx.Ebx + 0x8` (PEB 中的镜像基址)。
 
 ## 安全提示
